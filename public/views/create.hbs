@@ -1,0 +1,93 @@
+<html> 
+	<head>
+		<link rel ="stylesheet" href="../css/main.css">
+	</head>
+	<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+            <span class="navbar-brand mb-0 h1">Make a New Journal!</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/journals">Home Page
+                    <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/journals/myjournals">My Journals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login/Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>    
+		<form method = "POST" action="" class="js-form form">
+		    <div class="row">
+		      <div class="form-group blue-border col-md-6">
+		        <label for="title">Title</label>
+		        <input type="text" class="form__input form-control" placeholder="Enter title" autocomplete="off" data-validate-field="title" name="title" id="title">
+		      </div>
+		    </div>
+
+		    <div class="form-group blue-border">
+		      <label for="body">Enter your text</label>
+		      <textarea name="body" cols="30" rows="10" class="form__textarea form-control" data-validate-field="body" id="body"></textarea>
+		    </div>
+
+			<div class="form-group blue-border">
+		      <label for="password">Enter your tags (Optional)</label>
+		      <input type="text" class="form__input form-control" placeholder="Enter tags" autocomplete="off" name="tags">
+		    </div>
+
+		    <div class="form-group">
+		      <input type="checkbox" id="checkbox" class="form__checkbox" data-validate-field="checkbox" name = "isPrivate" ><label for="checkbox">Make Private</label>
+		    </div>
+
+		    <input type = "submit">
+  		</form>
+
+  <script src = "../just-validate.min.js"></script>
+  <script>
+    new window.JustValidate('.js-form', {
+        rules: {
+            title: {
+                required: true
+            },
+            body: {
+                required: true
+            }
+        },
+
+        focusWrongField: true,
+
+        submitHandler: function (form, values, ajax) {
+            ajax({
+                url: '/journals/create',
+                method: 'POST',
+                data: values,
+                async: true,
+                callback: function (response) {
+                    alert('Successful!');
+                    window.location.replace('/journals/myjournals');
+                },
+                error: function (response) {
+                    alert('Something went wrong. Try again.');
+                }
+            });
+        },
+        
+        invalidFormCallback: function (errors) {
+            console.log(errors);
+        },
+    });
+	</script>
+</body>
+</html>

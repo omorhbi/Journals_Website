@@ -1,0 +1,53 @@
+<html>
+	<body>  
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    		<div class="container">
+      		<span class="navbar-brand mb-0 h1">Journals</span>
+      		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        		<span class="navbar-toggler-icon"></span>
+      		</button>
+      		<div class="collapse navbar-collapse" id="navbarResponsive">
+        		<ul class="navbar-nav ml-auto">
+          		<li class="nav-item active">
+            		<a class="nav-link" href="#">Home
+              		<span class="sr-only">(current)</span>
+            		</a>
+          		</li>
+          		<li class="nav-item">
+            		<a class="nav-link" href="/journals/create">Make a new Journal</a>
+          		</li>
+          		<li class="nav-item">
+            		<a class="nav-link" href="/journals/myjournals">My Journals</a>
+          		</li>
+          		<li class="nav-item">
+            		<a class="nav-link" href="/login">Login/Register</a>
+          		</li>
+          		<li class="nav-item">
+            		<a class="nav-link" href="/logout">Logout</a>
+          		</li>
+        		</ul>
+      		</div>
+    	</div>
+  	</nav>
+		<div class = "container">
+			<h2>Search Journals</h2>
+			<div class = "filter">
+				<form action = "/journals" method ="GET">
+	        		<input type="text" class = "search" name="title" value="" placeholder= "Search by title">
+	        		<input type="text" class = "search" name="tags" value="" placeholder="Search by single tag">
+	        		<input type="submit" value="Search">
+	        	</form>
+	        </div>
+			<ul>
+				<pre>
+					{{#each journals}}
+					<li>{{this.title}}</li>
+					<li>{{this.body}}</li>
+					<li>Tags: {{this.tags}}</li>
+					<li>Created at: {{this.createdAt}}</li>
+					<p><hr/></p>
+					{{/each}}
+				</pre>
+			</ul>
+	</body>
+</html>

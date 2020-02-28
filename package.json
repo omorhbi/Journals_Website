@@ -1,0 +1,34 @@
+{
+  "name": "omorhbi-final-project",
+  "version": "1.0.0",
+  "description": "Say you wanted to write a journal on your device, but you worry about it getting deleted. Or say you wanted to find other users journals on their daily lives but don't want to scroll through many social media posts to find them. A Certain Daily Journal gives the solution to that.",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyu-csci-ua-0480-001-fall-2019/omorhbi-final-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyu-csci-ua-0480-001-fall-2019/omorhbi-final-project/issues"
+  },
+  "homepage": "https://github.com/nyu-csci-ua-0480-001-fall-2019/omorhbi-final-project#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "hbs": "^4.0.6",
+    "just-validate": "^1.5.0",
+    "mongoose": "^5.7.7",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}

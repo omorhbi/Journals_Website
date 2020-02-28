@@ -1,0 +1,152 @@
+<html> 
+	<head>
+		<link rel ="stylesheet" href="../css/main.css">
+	</head>
+	<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+            <span class="navbar-brand mb-0 h1">Login/Register</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/journals">Home
+                    <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+		<form method = "POST" action="" class="js-form form">
+            <h3>Register a New Account</h3>
+		    <div class="row">
+		      <div class="form-group col-md-6">
+		        <label for="usernameQ">Username</label>
+		        <input type="text" class="form__input form-control" placeholder="Enter username" autocomplete="off" data-validate-field="usernameQ" name="usernameQ" id="usernameQ">
+		      </div>
+		    </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="passwordQ">Password</label>
+                <input type="text" class="form__input form-control" placeholder="Enter password" autocomplete="off" data-validate-field="passwordQ" name="passwordQ" id="passwordQ">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="passwordQ2">Confirm Password</label>
+                <input type="text" class="form__input form-control" placeholder="Confirm Password" autocomplete="off" data-validate-field="passwordQ2" name="passwordQ2" id="passwordQ2">
+              </div>
+            </div>
+
+            <input id = "button" name = "button" type = "submit">
+        </form>
+
+        <form method = "POST" action = "" class="js-form2 form">
+            <h3>Login</h3>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                <input type="text" class="form__input form-control" placeholder="Enter username" autocomplete="off" data-validate-field="username" name="username" id="username">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="text" class="form__input form-control" placeholder="Enter password" autocomplete="off" data-validate-field="password" name="password" id="password">
+              </div>
+            </div>
+
+
+		    <input id="button2" name = "button2" type = "submit" value = "login">
+  		</form>
+
+    <script src = "../just-validate.min.js"></script>
+    <script>
+        document.getElementById('button').onclick = () => {
+            new window.JustValidate('.js-form', {
+                rules: {
+                    usernameQ: {
+                        required: true
+                    },
+                    passwordQ: {
+                        required: true
+                    },
+                    passwordQ2: {
+                        required: true
+                    }
+                },
+
+                focusWrongField: true,
+
+                submitHandler: function (form, values, ajax) {
+                    ajax({
+                        url: '/login',
+                        method: 'POST',
+                        data: values,
+                        async: true,
+                        callback: function (response) {
+                            alert('Successful! You are now registered');
+                            window.location.replace('/journals');
+                        },
+                        error: function (response) {
+                            alert('Something went wrong. Try again.');
+                        }
+                    });
+                },
+                
+                invalidFormCallback: function (errors) {
+                    console.log(errors);
+                },
+            });
+        }
+    	</script>
+
+    <script>
+        document.getElementById('button2').onclick = () => {
+            new window.JustValidate('.js-form2', {
+                rules: {
+                    username: {
+                        required: true
+                    },
+                    password: {
+                        required: true
+                    }
+                },
+
+                focusWrongField: true,
+
+                submitHandler: function (form, values, ajax) {
+                    ajax({
+                        url: '/login',
+                        method: 'POST',
+                        data: values,
+                        async: true,
+                        callback: function (response) {
+                            alert('Form successfully sent!');
+                            window.location.replace('/journals/myjournals');
+                        },
+                        error: function (response) {
+                            alert('Something went wrong. Try again.');
+                        }
+                    });
+                },
+                
+                invalidFormCallback: function (errors) {
+                    console.log(errors);
+                },
+            });
+        }
+    </script>
+</body>
+</html>
